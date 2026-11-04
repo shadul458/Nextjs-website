@@ -29,19 +29,19 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section id="features" className="mx-auto max-w-5xl px-6 py-20">
-      <h2 className="text-center text-3xl font-bold">What I&apos;m learning</h2>
+    <section id="features" className="bg-black px-6 py-20 text-white">
+      <h2 className="text-center text-3xl font-medium">What I&apos;m learning</h2>
 
       {/* grid: 1 column on phones, 3 columns on medium screens and up */}
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
         {features.map((feature) => (
           // `key` helps React keep track of each item in a list.
           <div
             key={feature.title}
-            className="rounded-xl border border-zinc-200 p-6 shadow-sm dark:border-zinc-800"
+            className="border border-white/10 bg-white/[0.03] p-6"
           >
             <h3 className="text-xl font-semibold">{feature.title}</h3>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-zinc-400">
               {feature.description}
             </p>
           </div>
