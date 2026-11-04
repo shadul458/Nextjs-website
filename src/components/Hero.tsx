@@ -8,6 +8,7 @@
 import Navbar from "./Navbar";
 import EmailForm from "./EmailForm";
 import Bowtie from "./Bowtie";
+import RotatingWord from "./RotatingWord";
 
 export default function Hero() {
   return (
@@ -33,7 +34,9 @@ export default function Hero() {
 
         {/* Two lines: the second one is pushed right on bigger screens */}
         <h1 className="mt-6 text-4xl font-medium leading-tight tracking-tight sm:text-6xl">
-          <span className="block sm:-translate-x-16">Better Revenue</span>
+          <span className="block sm:-translate-x-16">
+            Better <RotatingWord />
+          </span>
           <span className="block sm:translate-x-16">
             Built on MaxIQ<span className="text-green-400">.</span>
           </span>
