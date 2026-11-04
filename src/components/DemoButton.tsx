@@ -10,7 +10,7 @@ export default function DemoButton({ type = "button", className = "" }: DemoButt
   return (
     <button
       type={type}
-      className={`flex items-center gap-2 bg-green-400 px-2 py-1.5 text-sm font-medium text-black transition hover:bg-green-300 ${className}`}
+      className={`flex items-center gap-2 bg-[#4af2a1] px-2 py-1.5 text-sm font-medium text-black transition hover:bg-[#7cf7bd] ${className}`}
     >
       {/* Small dark square with an arrow icon */}
       <span className="flex h-6 w-6 items-center justify-center bg-black/85">

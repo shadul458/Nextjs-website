@@ -28,18 +28,17 @@ export default function Hero() {
 
       {/* `relative` keeps the content above the absolute background layers */}
       <div className="relative mx-auto max-w-6xl px-4 pt-16 text-center sm:px-6 sm:pt-20">
-        <span className="inline-block border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-medium tracking-wide">
+        <span className="inline-block border border-white/20 bg-gradient-to-r from-[#4af2a1]/25 via-black/70 to-black/70 px-4 py-1.5 text-xs font-medium tracking-wide sm:text-sm">
           THE AI-NATIVE REVENUE PLATFORM
         </span>
 
-        {/* Two lines: the second one is pushed right on bigger screens */}
-        <h1 className="mt-6 text-4xl font-medium leading-tight tracking-tight sm:text-6xl">
-          <span className="block sm:-translate-x-16">
-            Better <RotatingWord />
+        {/* Line 1: "Better Revenue" + the animated green word.
+            Line 2: nudged a little to the right on bigger screens. */}
+        <h1 className="mt-6 text-4xl font-normal leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+          <span className="block">
+            Better Revenue <RotatingWord />
           </span>
-          <span className="block sm:translate-x-16">
-            Built on MaxIQ<span className="text-green-400">.</span>
-          </span>
+          <span className="block sm:translate-x-8">Built on MaxIQ.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-zinc-200 sm:text-base">

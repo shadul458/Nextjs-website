@@ -8,7 +8,7 @@
 
 import { useEffect, useState } from "react";
 
-const words = ["Revenue", "Pipeline", "Forecasts", "Retention", "Execution"];
+const words = ["Execution", "Forecasting", "Visibility", "Intelligence", "Retention"];
 
 export default function RotatingWord() {
   const [index, setIndex] = useState(0);
@@ -36,7 +36,7 @@ export default function RotatingWord() {
           slide-up animation each time the word changes. */}
       <span
         key={words[index]}
-        className="col-start-1 row-start-1 text-left text-green-400 animate-word-in"
+        className="col-start-1 row-start-1 text-left text-[#4af2a1] animate-word-in"
       >
         {words[index]}
       </span>
