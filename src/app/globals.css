@@ -258,7 +258,8 @@ body {
     font-weight: 500;
     transition:
       filter var(--t-fast) var(--ease-out),
-      background-color var(--t-fast) var(--ease-out);
+      background-color var(--t-fast) var(--ease-out),
+      transform var(--t-fast) var(--ease-out);
   }
 
   .btn-primary {
@@ -347,5 +348,152 @@ body {
   }
   #mobile-menu {
     translate: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PLAYFUL TOUCHES
+   Small, quick details. All of them switch off for reduced motion.
+   ───────────────────────────────────────────────────────────── */
+
+@layer components {
+  /* "Available" dot with a soft pulse ring */
+  .status-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #4cc38a;
+  }
+  .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #4cc38a;
+    animation: pulse 2s var(--ease-out) infinite;
+  }
+
+  /* Hand-drawn underline under the accent word */
+  .scribble {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble svg {
+    position: absolute;
+    left: 0;
+    bottom: -0.12em;
+    width: 100%;
+    height: 0.25em;
+    overflow: visible;
+  }
+  .scribble path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 800ms var(--ease-out) 700ms forwards;
+  }
+
+  /* Arrows that nudge on hover */
+  .nudge,
+  .nudge-up,
+  .card-arrow {
+    display: inline-block;
+    transition:
+      transform var(--t-fast) var(--ease-out),
+      color var(--t-fast) var(--ease-out);
+  }
+  .group:hover .nudge {
+    transform: translateX(4px);
+  }
+  .group:hover .nudge-up {
+    transform: translateY(-4px);
+  }
+  .card:hover .card-arrow {
+    transform: translate(4px, -4px);
+    color: var(--accent);
+  }
+
+  /* Buttons press in slightly */
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Card image zooms gently on hover */
+  .thumb {
+    transition: transform var(--t-slow) var(--ease-out);
+  }
+  .card:hover .thumb {
+    transform: scale(1.03);
+  }
+
+  /* Capability rows slide right with an amber dash */
+  .cap-item {
+    display: flex;
+    align-items: center;
+    transition: color var(--t-fast) var(--ease-out);
+  }
+  .cap-item::before {
+    content: "";
+    width: 0;
+    height: 1px;
+    margin-right: 0;
+    background: var(--accent);
+    transition:
+      width var(--t-base) var(--ease-out),
+      margin var(--t-base) var(--ease-out);
+  }
+  .cap-item:hover::before {
+    width: 12px;
+    margin-right: 8px;
+  }
+
+  /* Theme icon gives a little spin */
+  .theme-toggle svg {
+    transition: transform var(--t-base) var(--ease-out);
+  }
+  .theme-toggle:hover svg {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot::after {
+    animation: none;
+    opacity: 0;
+  }
+  .scribble path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .group:hover .nudge,
+  .group:hover .nudge-up,
+  .card:hover .card-arrow,
+  .card:hover .thumb,
+  .theme-toggle:hover svg,
+  .btn:active {
+    transform: none;
   }
 }

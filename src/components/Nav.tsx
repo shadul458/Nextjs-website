@@ -38,7 +38,7 @@ function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label="Switch colour theme"
-      className="flex size-8 items-center justify-center rounded-sm border border-line text-muted transition-colors hover:text-text"
+      className="theme-toggle flex size-8 items-center justify-center rounded-sm border border-line text-muted transition-colors hover:text-text"
     >
       {/* Sun shows in dark mode, moon in light mode (handled in CSS below) */}
       <svg viewBox="0 0 16 16" className="theme-icon-sun size-4" fill="none" stroke="currentColor" strokeWidth="1.25" aria-hidden="true">

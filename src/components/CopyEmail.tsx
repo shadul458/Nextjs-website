@@ -29,7 +29,7 @@ export default function CopyEmail({ email }: { email: string }) {
         {email}
       </a>
       <button type="button" onClick={copy} className="btn btn-secondary px-4 py-2 t-small" aria-live="polite">
-        {copied ? "Copied" : "Copy"}
+        {copied ? "Copied ✓" : "Copy"}
       </button>
     </div>
   );

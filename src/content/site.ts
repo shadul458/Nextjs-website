@@ -16,6 +16,7 @@ export const site = {
 };
 
 export const hero = {
+  status: "Available for new projects",
   label: "Webflow & Framer developer · SEO · CRO",
   // The headline is split so the last word can use the accent colour.
   headline: "I build Webflow and Framer sites that load fast, rank, and",

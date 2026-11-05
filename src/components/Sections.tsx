@@ -31,18 +31,32 @@ export function Hero() {
     <section aria-label="Introduction" className="relative overflow-hidden">
       <HeroDots />
       <div className={`${container} relative flex flex-col items-start gap-6 pt-32 pb-16 md:pb-32`}>
-        <p data-hero style={stagger(0)} className="t-label text-muted">
+        {/* Playful status pill with a softly pulsing dot */}
+        <p data-hero style={stagger(0)} className="flex items-center gap-2 rounded-pill border border-line bg-surface px-3 py-1 t-small">
+          <span aria-hidden="true" className="status-dot" />
+          {hero.status}
+        </p>
+        <p data-hero style={stagger(1)} className="t-label text-muted">
           {hero.label}
         </p>
-        <h1 data-hero style={stagger(1)} className="t-hero max-w-[16ch]">
-          {hero.headline} <span className="text-accent">{hero.accentWord}</span>.
+        <h1 data-hero style={stagger(2)} className="t-hero max-w-[16ch]">
+          {hero.headline}{" "}
+          <span className="scribble text-accent">
+            {hero.accentWord}
+            {/* Hand-drawn underline that draws itself in after the text loads */}
+            <svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 14 C 40 6, 90 4, 130 8 S 180 14, 196 9" pathLength="1" />
+            </svg>
+          </span>
+          .
         </h1>
-        <p data-hero style={stagger(2)} className="max-w-[65ch] text-muted">
+        <p data-hero style={stagger(3)} className="max-w-[65ch] text-muted">
           {hero.body}
         </p>
-        <div data-hero style={stagger(3)} className="flex flex-wrap gap-4 pt-2">
-          <a href="#work" className="btn btn-primary px-6 py-3">
+        <div data-hero style={stagger(4)} className="flex flex-wrap gap-4 pt-2">
+          <a href="#work" className="btn btn-primary group gap-2 px-6 py-3">
             View work
+            <span aria-hidden="true" className="nudge">→</span>
           </a>
           <a href="#contact" className="btn btn-secondary px-6 py-3">
             Get in touch
@@ -65,14 +79,15 @@ function Thumbnail({ study }: { study: CaseStudy }) {
         height={1000}
         sizes="(min-width: 768px) 1136px, 100vw"
         loading="lazy"
-        className="aspect-[16/10] w-full rounded-md border border-line object-cover"
+        className="thumb aspect-[16/10] w-full object-cover"
       />
     );
   }
   // Placeholder until a real screenshot is added in src/content/site.ts
   return (
-    <div className="flex aspect-[16/10] w-full items-center justify-center rounded-md border border-line bg-bg">
-      <span className="t-label text-muted">Thumbnail</span>
+    <div className="thumb flex aspect-[16/10] w-full flex-col items-center justify-center gap-2 bg-bg">
+      <span className="t-h2 text-muted">{study.platform}</span>
+      <span className="t-label text-muted">Screenshot coming soon</span>
     </div>
   );
 }
@@ -80,9 +95,14 @@ function Thumbnail({ study }: { study: CaseStudy }) {
 function WorkCard({ study, index }: { study: CaseStudy; index: number }) {
   const body = (
     <article className="card flex h-full flex-col gap-6 rounded-md border border-line bg-surface p-6 md:p-8">
-      <Thumbnail study={study} />
+      <div className="overflow-hidden rounded-md border border-line">
+        <Thumbnail study={study} />
+      </div>
       <div className="flex flex-1 flex-col gap-2">
-        <h3 className="t-h3">{study.name}</h3>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="t-h3">{study.name}</h3>
+          <span aria-hidden="true" className="card-arrow t-h3 text-muted">↗</span>
+        </div>
         <p className="max-w-[65ch] text-muted">{study.problem}</p>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-4">
@@ -169,7 +189,7 @@ export function Capabilities() {
               <h3 className="t-label text-muted">{group.title}</h3>
               <ul className="flex flex-col border-t border-line">
                 {group.items.map((item) => (
-                  <li key={item} className="border-b border-line py-3">
+                  <li key={item} className="cap-item border-b border-line py-3">
                     {item}
                   </li>
                 ))}
@@ -219,6 +239,9 @@ export function Footer() {
       <div className={`${container} flex flex-wrap items-center justify-between gap-4 t-small text-muted`}>
         <p>© 2026 {site.name}</p>
         {contact.lighthouse && <p className="t-mono">{contact.lighthouse}</p>}
+        <a href="#top" className="link group flex items-center gap-2">
+          Back to top <span aria-hidden="true" className="nudge-up">↑</span>
+        </a>
       </div>
     </footer>
   );
